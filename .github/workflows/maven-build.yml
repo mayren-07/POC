@@ -24,8 +24,8 @@ jobs:
 
     - name: EC2 Deploy Action
       run: |
-           echo "${{secrets.KEY_EC2}}" > "springKey.pem" && chmod 400 "springKey.pem"
-           ssh -o StrictHostKeyChecking=no -i "springKey.pem" ubuntu@ec2-44-199-0-95.compute-1.amazonaws.com "
+           echo "${{secrets.KEY_EC2}}" > springKey && chmod 400 springKey
+           ssh -o StrictHostKeyChecking=no -i "springKey" ubuntu@ec2-44-199-0-95.compute-1.amazonaws.com "
              cd /home/ubuntu/POC &&
              git pull &&
              mvn clean package -DskipTests &&
